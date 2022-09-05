@@ -4,7 +4,16 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Clock time = new Clock(20,14,51);
-        System.out.println(time);
+        Scanner ClockInput = new Scanner(System.in);
+        
+        System.out.print("Enter Hour: ");
+        int hour = ClockInput.nextInt();
+        System.out.print("Enter Minute: ");
+        int minute = ClockInput.nextInt();
+        System.out.print("Enter Second: ");
+        int second = ClockInput.nextInt();
+        
+        Clock time = new Clock(hour, minute, second);
+        System.out.println("Time is: " + time);
     }
 }

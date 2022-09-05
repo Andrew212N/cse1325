@@ -1,3 +1,4 @@
+
 public class Clock
 {
     int hour;
@@ -15,6 +16,16 @@ public class Clock
     @Override
     public String toString()
     {
-        return hour + ":" + minute + ":" + second;
+        return addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+    }
+    
+    private String addZero(int i)
+    {
+        String twoDigits = Integer.toString(i);
+        if (twoDigits.length() == 1)
+        {
+            return "0"+twoDigits;
+        }
+        return twoDigits;
     }
 }
