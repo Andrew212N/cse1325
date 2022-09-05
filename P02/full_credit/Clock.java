@@ -1,11 +1,11 @@
 public class Clock
 {
-    String hour;
-    String minute;
-    String second;
+    int hour;
+    int minute;
+    int second;
     
     //constructor
-    public Clock(String hour, String minute, String second)
+    public Clock(int hour, int minute, int second)
     {
         this.hour = hour;
         this.minute = minute;
