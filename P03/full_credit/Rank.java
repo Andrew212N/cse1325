@@ -1,8 +1,17 @@
-class Rank
+public class Rank
 {
-    public static final int min = 0;
-    public static final int max = 9;
-    public int n;
+    public static final int minRank = 0;
+    public static final int maxRank = 9;
+    public int rank;
     
-    int inRange(int min, int max, int n)
-}
+    public Rank(rank)
+    {
+        this.rank = rank;
+    }
+    
+    @Override
+    public String toString()
+    {
+        String str = String.valueOf(rank);
+        return str;
+    }
