@@ -4,7 +4,7 @@ public class Rank
     public static final int maxRank = 9;
     public int rank;
     
-    public Rank(rank)
+    public Rank(int rank)
     {
         this.rank = rank;
     }
@@ -15,3 +15,4 @@ public class Rank
         String str = String.valueOf(rank);
         return str;
     }
+}

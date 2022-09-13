@@ -1,4 +1,4 @@
-private enum Suit
+enum Suit
 {
     U, T, A;
 }
