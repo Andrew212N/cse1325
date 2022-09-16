@@ -5,7 +5,7 @@ public class Vehicle
     private String model;
     private BodyStyle bodystyle;
 
-    public Vehicle(int year, String make, String model, Bodystyle bodystyle)
+    public Vehicle(int year, String make, String model, BodyStyle bodystyle)
     {
         this.year = year;
         this.make = make;
