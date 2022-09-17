@@ -1,4 +1,4 @@
-public abstract class Vehicle
+abstract class Vehicle
 {
     private int year;
     private String make;
@@ -13,9 +13,13 @@ public abstract class Vehicle
         this.bodystyle = bodystyle;
     }
     
-    public double range()
-    public double fuelConsumed()
-    public dollarsToTravel()
+    public abstract double range(double amountOfFuel, double milesPerFuel);
+    public abstract double fuelConsumed(double miles);
+    public abstract double dollarsToTravel(double miles);
     
+    @Override
     public String toString()
+    {
+        return " " + this.year + " " + this.make + " " + this.model + " " + this.bodystyle + " ";
+    }
 }

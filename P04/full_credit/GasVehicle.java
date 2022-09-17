@@ -1,24 +1,33 @@
 public class GasVehicle extends Vehicle
 {
-    public double dolalrsPerGallonOfGas;
+    public double dollarsPerGallonOfGas;
     private double milesPerGallon;
     private double gallonsInTank;
 
-    public ElectricVehicle(int year, String make, BodyStyle bodystyle, double milesPerGallon, double gallonsInTank)
+    public GasVehicle(int year, String make, String model, BodyStyle bodystyle, double milesPerGallon, double gallonsInTank)
     {
-        this.year = year;
-        this.make = make;
-        this.bodystyle = bodystyle;
+        super(year, make, model, bodystyle);
         this.milesPerGallon = milesPerGallon;
         this.gallonsInTank = gallonsInTank;
     }
     
     @Override
-    public double range()
+    public double range(double gallonsInTank, double milesPerGallon)
+    {
+        return gallonsInTank * milesPerGallon;
+    }
     
     @Override
     public double fuelConsumed(double miles)
-    
-    @Override
+    {
+        double result = miles/milesPerGallon;
+        if (result > gallonsInTank)
+            throw new ArithmeticException("Fuel cannot be less than 0");
+        return result;
+    }
+
     public double dollarsToTravel(double miles)
+    {
+        return fuelConsumed(miles) * dollarsPerGallonOfGas;
+    }
 }
