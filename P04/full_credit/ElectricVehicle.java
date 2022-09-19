@@ -12,7 +12,7 @@ public class ElectricVehicle extends Vehicle
     }
     
     @Override
-    public double range(double kwhInBattery, double whPerMile)
+    public double range()
     {
         return kwhInBattery / (whPerMile / 1000);
     }
@@ -21,8 +21,8 @@ public class ElectricVehicle extends Vehicle
     public double fuelConsumed(double miles)
     {
         double result = miles / (whPerMile / 1000);
-        if (result > kwhInBattery)
-            throw new ArithmeticException("Fuel cannot be less than 0");
+       // if (result > kwhInBattery)
+           // throw new ArithmeticException("Fuel cannot be less than 0");
         return result;
     }
     

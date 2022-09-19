@@ -12,7 +12,7 @@ public class GasVehicle extends Vehicle
     }
     
     @Override
-    public double range(double gallonsInTank, double milesPerGallon)
+    public double range()
     {
         return gallonsInTank * milesPerGallon;
     }
@@ -20,12 +20,13 @@ public class GasVehicle extends Vehicle
     @Override
     public double fuelConsumed(double miles)
     {
-        double result = miles/milesPerGallon;
-        if (result > gallonsInTank)
-            throw new ArithmeticException("Fuel cannot be less than 0");
+        double result = miles / milesPerGallon;
+        //if (result > gallonsInTank)
+            //throw new ArithmeticException("Fuel cannot be less than 0");
         return result;
     }
 
+    @Override
     public double dollarsToTravel(double miles)
     {
         return fuelConsumed(miles) * dollarsPerGallonOfGas;

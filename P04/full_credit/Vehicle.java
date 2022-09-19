@@ -13,7 +13,7 @@ abstract class Vehicle
         this.bodystyle = bodystyle;
     }
     
-    public abstract double range(double amountOfFuel, double milesPerFuel);
+    public abstract double range();
     public abstract double fuelConsumed(double miles);
     public abstract double dollarsToTravel(double miles);
     
