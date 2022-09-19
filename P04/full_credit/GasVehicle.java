@@ -1,6 +1,6 @@
 public class GasVehicle extends Vehicle
 {
-    public double dollarsPerGallonOfGas;
+    public static double dollarsPerGallonOfGas = Double.NaN;
     private double milesPerGallon;
     private double gallonsInTank;
 
@@ -21,8 +21,10 @@ public class GasVehicle extends Vehicle
     public double fuelConsumed(double miles)
     {
         double result = miles / milesPerGallon;
-        //if (result > gallonsInTank)
-            //throw new ArithmeticException("Fuel cannot be less than 0");
+        if (result > gallonsInTank)
+        {
+            throw new ArithmeticException("Fuel cannot be less than 0");
+        }
         return result;
     }
 

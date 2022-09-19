@@ -8,9 +8,9 @@ public class TravelCost
         Scanner vehicleInput = new Scanner(System.in);
         
         System.out.print("Enter price per gallon of gas(dollars): ");
-        double dollarsPerGallonOfGas = vehicleInput.nextDouble();
+        GasVehicle.dollarsPerGallonOfGas = vehicleInput.nextDouble();
         System.out.print("Enter price per KWh of electricity(cents): ");
-        double centsPerKwhOfElectricity = vehicleInput.nextDouble();
+        ElectricVehicle.centsPerKwhOfElectricity = vehicleInput.nextDouble();
         System.out.print("How many miles is the trip? ");
         double miles = vehicleInput.nextDouble();
         
@@ -31,8 +31,8 @@ public class TravelCost
         
         for(int counter = 0; counter < vehicles.size(); counter++)
         {
-            System.out.printf("$ %.1f ", vehicles.get(counter).dollarsToTravel(miles));
-            System.out.printf("(Range: %.1f)", vehicles.get(counter).range());
+            System.out.printf("$ %.2f ", vehicles.get(counter).dollarsToTravel(miles));
+            System.out.printf("(Range: %.0f)", vehicles.get(counter).range());
             System.out.println(vehicles.get(counter));
         }
     }
