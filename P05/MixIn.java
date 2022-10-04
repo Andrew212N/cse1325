@@ -11,7 +11,6 @@ public class MixIn
     
     public String toString()
     {
-        
         if (amount.equals(MixInAmount.Normal))
             return "" + flavor + " ";
         else

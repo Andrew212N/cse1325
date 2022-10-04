@@ -3,28 +3,22 @@ import java.util.ArrayList;
 public class Scoop
 {
     private IceCreamFlavor flavor;
-    private MixIn mixins[] = NaN;
+    private ArrayList<MixIn> mix;
     
     public Scoop (IceCreamFlavor flavor)
     {
         this.flavor = flavor;
-        ArrayList<MixIn> toppings = new ArrayList<MixIn>();
+        mix = new ArrayList<MixIn>();
     }
     
     public void addMixIn(MixIn mixins[])
     {
-        toppings.add(mixins);
+        this.mix.addAll(mix);
     }
     
+    @Override
     public String toString()
     {
-        String addons[];
-        for (int i = 0; i < toppings.size(); i++)
-        {
-            String s = toppings.get(i);
-            addons.concat(s).concat(", ");
-        }
-        return "" + flavor +"with " + addons + " ";
-    }
-    
+        return "" + flavor + "with " + mix + " ";
+    } 
 }
