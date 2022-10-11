@@ -12,6 +12,12 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
 import emporium.Emporium;
+import emporium.product.IceCreamFlavor;
+import emporium.product.Item;
+import emporium.product.MixIn;
+import emporium.product.MixInAmount;
+import emporium.product.MixInFlavor;
+import emporium.product.Scoop;
 
 //notes: I wasn't able to get the imports from Emporium
 //it gave me an error saying that it didnt exist, I assume
