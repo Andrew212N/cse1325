@@ -4,7 +4,8 @@ public class MICE
 {
     public static void main(String[] args)
     {
-        new MainWin(title: "MICE");
+        MainWin app = new MainWin("MICE");
+        app.setVisible(true);
     }
 }
 
