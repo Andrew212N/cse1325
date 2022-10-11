@@ -1,4 +1,11 @@
+package emporium;
 import java.util.ArrayList;
+import product.IceCreamFlavor;
+import product.Item;
+import product.MixIn;
+import product.MixInAmount;
+import product.MixInFlavor;
+import product.Scoop;
 
 public class Emporium
 {
@@ -8,28 +15,30 @@ public class Emporium
     
     public void addMixInFlavor(MixInFlavor flavor)
     {
-        mixins.add(new MixInFlavor(flavor));
+        mixins.add(flavor);
     }
     
     public void addIceCreamFlavor(IceCreamFlavor flavor)
     {
-        flavors.add(new IceCreamFlavor(flavor));
+        flavors.add(flavor);
     }
     
     public void addScoop(Scoop scoop)
     {
-        scoops.add(new Scoop(scoop));
+        scoops.add(scoop);
     }
     
     public void mixInFlavors()
     {
-        mixInFlavors.toArray();
+        mixins.toArray();
     }
-    public Object[] iceCreamFlavors()
+    
+    public void iceCreamFlavors()
     {
-        iceCreamFlavors.toArray();
+        flavors.toArray();
     }
-    public Object[] scoops()
+    
+    public void scoops()
     {
         scoops.toArray();
     }
