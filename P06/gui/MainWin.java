@@ -107,10 +107,9 @@ public class MainWin extends JFrame
         };
         int button = JOptionPane.showConfirmDialog(this, objects, "New Ice Cream Flavor", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         
-        flavors.add(new IceCreamFlavor
-        
         if(button == JOptionPane.OK_OPTION)
         {
+            flavors.add(new IceCreamFlavorFlavor(flavors.getText(), descriptions.getText(), prices.getValue(), costs.getValue());
             JOptionPane.showMessageDialog(this, "Flavor: " + flavors.getText() + "\nDescription: " + descriptions.getText() + "\nPrice: " + prices.getValue() + "\nCost: " + costs.getValue());
         }
     }
@@ -138,6 +137,7 @@ public class MainWin extends JFrame
         int button = JOptionPane.showConfirmDialog(this, objects, "New Mix In Flavor", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(button == JOptionPane.OK_OPTION)
         {
+            mixins.add(new MixInFlavor(mixins.getText(), descriptions.getText(), prices.getValue(), costs.getValue());
             JOptionPane.showMessageDialog(this, "MixIn: " + mixins.getText() + "\nDescription: " + descriptions.getText() + "\nPrice: " + prices.getValue() + "\nCost: " + costs.getValue());
         }
     }
