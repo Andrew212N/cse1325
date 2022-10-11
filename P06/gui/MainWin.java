@@ -11,7 +11,14 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
+import java.util.ArrayList;
 import emporium.Emporium;
+import product.IceCreamFlavor;
+import product.Item;
+import product.MixIn;
+import product.MixInAmount;
+import product.MixInFlavor;
+import product.Scoop;
 
 //notes: I wasn't able to get the imports from Emporium
 //it gave me an error saying that it didnt exist, I assume
@@ -81,7 +88,7 @@ public class MainWin extends JFrame
     public void onCreateIceCreamFlavorClick()
     {
         JLabel flavorLabel = new JLabel("<HTML><br/>Ice Cream Flavor</HTML>");
-        flavors = new JTextField(20);
+        flavor = new JTextField(20);
         JLabel descriptionLabel = new JLabel("<HTML><br/>Description</HTML>");
         descriptions = new JTextField(60);
         
@@ -93,12 +100,15 @@ public class MainWin extends JFrame
         costs = new JSpinner(range);
         
         Object[] objects = {
-            flavorLabel, flavors,
+            flavorLabel, flavor,
             descriptionLabel, descriptions,
             priceLabel, prices,
             costLabel, costs
         };
         int button = JOptionPane.showConfirmDialog(this, objects, "New Ice Cream Flavor", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        flavors.add(new IceCreamFlavor
+        
         if(button == JOptionPane.OK_OPTION)
         {
             JOptionPane.showMessageDialog(this, "Flavor: " + flavors.getText() + "\nDescription: " + descriptions.getText() + "\nPrice: " + prices.getValue() + "\nCost: " + costs.getValue());
@@ -108,7 +118,7 @@ public class MainWin extends JFrame
     public void onCreateMixInClick()
     {
         JLabel mixInLabel = new JLabel("<HTML><br/>Mix In Flavor</HTML>");
-        mixins = new JTextField(20);
+        mixin = new JTextField(20);
         JLabel descriptionLabel = new JLabel("<HTML><br/>Description</HTML>");
         descriptions = new JTextField(60);
         
@@ -120,7 +130,7 @@ public class MainWin extends JFrame
         costs = new JSpinner(range);
         
         Object[] objects = {
-            mixInLabel, mixins,
+            mixInLabel, mixin,
             descriptionLabel, descriptions,
             priceLabel, prices,
             costLabel, costs
