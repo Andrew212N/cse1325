@@ -22,10 +22,6 @@ import product.MixInAmount;
 import product.MixInFlavor;
 import product.Scoop;
 
-//notes: I wasn't able to get the imports from Emporium
-//it gave me an error saying that it didnt exist, I assume
-//that multiple levels of importing packages arent supported :(
-
 public class MainWin extends JFrame
 {
     private Emporium emporium = new Emporium();
