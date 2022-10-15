@@ -1,3 +1,5 @@
+package gui;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -29,6 +31,7 @@ public class MainWin extends JFrame
     private Emporium emporium = new Emporium();
     
     private JTextField flavors;
+    private JTextField mixins;
     private JTextField descriptions;
     private JSpinner costs;
     private JSpinner prices;
@@ -88,7 +91,7 @@ public class MainWin extends JFrame
     public void onCreateIceCreamFlavorClick()
     {
         JLabel flavorLabel = new JLabel("<HTML><br/>Ice Cream Flavor</HTML>");
-        flavor = new JTextField(20);
+        flavors = new JTextField(20);
         JLabel descriptionLabel = new JLabel("<HTML><br/>Description</HTML>");
         descriptions = new JTextField(60);
         
@@ -100,7 +103,7 @@ public class MainWin extends JFrame
         costs = new JSpinner(range);
         
         Object[] objects = {
-            flavorLabel, flavor,
+            flavorLabel, flavors,
             descriptionLabel, descriptions,
             priceLabel, prices,
             costLabel, costs
@@ -109,7 +112,7 @@ public class MainWin extends JFrame
         
         if(button == JOptionPane.OK_OPTION)
         {
-            flavors.add(new IceCreamFlavorFlavor(flavors.getText(), descriptions.getText(), prices.getValue(), costs.getValue());
+            emporium.addIceCreamFlavor(new IceCreamFlavor(flavors.getText(), descriptions.getText(), (Integer)prices.getValue(), (Integer)costs.getValue()));
             JOptionPane.showMessageDialog(this, "Flavor: " + flavors.getText() + "\nDescription: " + descriptions.getText() + "\nPrice: " + prices.getValue() + "\nCost: " + costs.getValue());
         }
     }
@@ -117,7 +120,7 @@ public class MainWin extends JFrame
     public void onCreateMixInClick()
     {
         JLabel mixInLabel = new JLabel("<HTML><br/>Mix In Flavor</HTML>");
-        mixin = new JTextField(20);
+        mixins = new JTextField(20);
         JLabel descriptionLabel = new JLabel("<HTML><br/>Description</HTML>");
         descriptions = new JTextField(60);
         
@@ -129,7 +132,7 @@ public class MainWin extends JFrame
         costs = new JSpinner(range);
         
         Object[] objects = {
-            mixInLabel, mixin,
+            mixInLabel, mixins,
             descriptionLabel, descriptions,
             priceLabel, prices,
             costLabel, costs
@@ -137,7 +140,7 @@ public class MainWin extends JFrame
         int button = JOptionPane.showConfirmDialog(this, objects, "New Mix In Flavor", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(button == JOptionPane.OK_OPTION)
         {
-            mixins.add(new MixInFlavor(mixins.getText(), descriptions.getText(), prices.getValue(), costs.getValue());
+            emporium.addMixInFlavor(new MixInFlavor(mixins.getText(), descriptions.getText(), (Integer)prices.getValue(), (Integer)costs.getValue()));
             JOptionPane.showMessageDialog(this, "MixIn: " + mixins.getText() + "\nDescription: " + descriptions.getText() + "\nPrice: " + prices.getValue() + "\nCost: " + costs.getValue());
         }
     }
