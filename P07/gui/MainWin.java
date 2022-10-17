@@ -60,7 +60,6 @@ import emporium.Emporium;
 
 public class MainWin extends JFrame {
 
-    private
     public MainWin() {
         super("Mavs Ice Cream Emporium");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
