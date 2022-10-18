@@ -60,10 +60,6 @@ import product.Scoop;
 import emporium.Emporium;
 
 public class MainWin extends JFrame {
-<<<<<<< HEAD
-=======
-
->>>>>>> fcff4652f4a577142b8410f34d40125be87a7132
     public MainWin() {
         super("Mavs Ice Cream Emporium");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -146,7 +142,7 @@ public class MainWin extends JFrame {
              viewICFb.setToolTipText("View Ice Cream Flavors");
              toolbar.add(viewICFb);
              viewICFb.addActionListener(event -> view(Screen.ICE_CREAM_FLAVORS));
-          
+             
          viewMIFb = new JButton(new ImageIcon("viewmixin.png"));
              viewMIFb.setActionCommand("View Mix In Flavors");
              viewMIFb.setToolTipText("View Mix In Flavors");
