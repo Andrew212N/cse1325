@@ -42,6 +42,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.FlowLayout;
 
 import java.io.File;
 import java.io.BufferedReader;
@@ -64,7 +65,7 @@ public class MainWin extends JFrame {
         super("Mavs Ice Cream Emporium");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(640, 480);
-        
+   
         // /////// ////////////////////////////////////////////////////////////////
         // M E N U
         // Add a menu bar to the PAGE_START area of the Border Layout
@@ -112,62 +113,61 @@ public class MainWin extends JFrame {
         
         // TOOLBAR STUFF
         JToolBar toolbar = new JToolBar("Ice cream yes");
-        
-        /*
+
         // CONTROL BUTTONS IDK YES PERHAPS
-        JButton saveB = new JButton(new ImageIcon("save.png"));
+        JButton saveB = new JButton(new ImageIcon(this.getClass().getResource("save.png")));
             saveB.setActionCommand("Save");
             saveB.setToolTipText("Save the file");
             saveB.setBorder(null);
             toolbar.add(saveB);
-            saveB.addActionListener(event -> onSaveClick());
+            //saveB.addActionListener(event -> onSaveClick());
             
-        JButton saveAsB = new JButton(new ImageIcon("saveas.png"));
+        JButton saveAsB = new JButton(new ImageIcon(this.getClass().getResource("saveas.png")));
             saveAsB.setActionCommand("Save As");
             saveAsB.setToolTipText("Save the file as...");
             saveAsB.setBorder(null);
             toolbar.add(saveAsB);
             saveAsB.addActionListener(event -> onSaveAsClick());
             
-        JButton openB = new JButton(new ImageIcon("open.png"));
+        JButton openB = new JButton(new ImageIcon(this.getClass().getResource("open.png")));
             openB.setActionCommand("Open");
             openB.setToolTipText("Open file...");
             openB.setBorder(null);
             toolbar.add(openB);
-            openB.addActionListener(event -> onOpenClick());
-        */    
+            //openB.addActionListener(event -> onOpenClick());
+    
        // VIEW AND CREATE BUTTONS
-        viewICFb = new JButton(new ImageIcon("viewflavor.png"));
+        viewICFb = new JButton(new ImageIcon(this.getClass().getResource("viewflavor.png")));
              viewICFb.setActionCommand("View Ice Cream Flavors");
              viewICFb.setToolTipText("View Ice Cream Flavors");
              toolbar.add(viewICFb);
              viewICFb.addActionListener(event -> view(Screen.ICE_CREAM_FLAVORS));
-             
-         viewMIFb = new JButton(new ImageIcon("viewmixin.png"));
+          
+         viewMIFb = new JButton(new ImageIcon(this.getClass().getResource("viewmixin.png")));
              viewMIFb.setActionCommand("View Mix In Flavors");
              viewMIFb.setToolTipText("View Mix In Flavors");
              toolbar.add(viewMIFb);
              viewMIFb.addActionListener(event -> view(Screen.MIX_IN_FLAVORS));
             
-         viewScoopb = new JButton(new ImageIcon("viewscoop.png"));
+         viewScoopb = new JButton(new ImageIcon(this.getClass().getResource("viewscoop.png")));
              viewScoopb.setActionCommand("View Scoops");
              viewScoopb.setToolTipText("View Scoops");
              toolbar.add(viewScoopb);
              viewScoopb.addActionListener(event -> view(Screen.SCOOPS));
             
-         createICFb = new JButton(new ImageIcon("newflavor.png"));
+         createICFb = new JButton(new ImageIcon(this.getClass().getResource("newflavor.png")));
              createICFb.setActionCommand("Create Ice Cream Flavor");
              createICFb.setToolTipText("Create Ice Cream Flavor");
              toolbar.add(createICFb);
              createICFb.addActionListener(event -> onCreateIceCreamFlavorClick());
             
-         createMIFb = new JButton(new ImageIcon("newmixin.png"));
+         createMIFb = new JButton(new ImageIcon(this.getClass().getResource("newmixin.png")));
              createMIFb.setActionCommand("Create Mix In");
              createMIFb.setToolTipText("Create Mix In Flavor");
              toolbar.add(createMIFb);
              createMIFb.addActionListener(event -> onCreateMixInFlavorClick());
             
-         createScoopb = new JButton(new ImageIcon("newscoop.png"));
+         createScoopb = new JButton(new ImageIcon(this.getClass().getResource("newscoop.png")));
              createScoopb.setActionCommand("Create Scoop");
              createScoopb.setToolTipText("Create Ice Cream Scoop");
              toolbar.add(createScoopb);
@@ -181,8 +181,11 @@ public class MainWin extends JFrame {
         display.setVerticalAlignment(JLabel.TOP);
         add(display, BorderLayout.CENTER);
 
+        getContentPane().add(toolbar, BorderLayout.PAGE_START);
+
         // Make everything in the JFrame visible
         setVisible(true);
+        
         
         // Start a new emporium
         emporium = new Emporium();
@@ -193,10 +196,70 @@ public class MainWin extends JFrame {
     
     //protected void onSaveClick();
     
-    //protected void onSaveAsClick();
+    protected void onSaveAsClick()
+    {
+        JFrame parentFrame = new JFrame();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Save File As");
+        
+        int userSelection = fileChooser.showSaveDialog(parentFrame);
+        
+        if(userSelection == JFileChooser.APPROVE_OPTION)
+        {
+            File filename = fileChooser.getSelectedFile();
+            System.out.println("Save as file: " + filename.getAbsolutePath());
+        }
+    }
+    /*
+    protected void onOpenClick()
+    {
+        final JFileChooser fc = new JFileChooser(filename);  // Create a file chooser dialog
+        FileFilter nimFiles = new FileNameExtensionFilter("Nim files", "nim");
+        fc.addChoosableFileFilter(nimFiles);         // Add "Nim file" filter
+        fc.setFileFilter(nimFiles);                  // Show Nim files only by default
+        
+        int result = fc.showOpenDialog(this);        // Run dialog, return button clicked
+        if (result == JFileChooser.APPROVE_OPTION) { // Also CANCEL_OPTION and ERROR_OPTION
+            filename = fc.getSelectedFile();        // Obtain the selected File object
+            
+            try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+                String magicCookie = br.readLine();
+                if(!magicCookie.equals(MAGIC_COOKIE)) throw new RuntimeException("Not a Nim file");
+                String fileVersion = br.readLine();
+                if(!fileVersion.equals(FILE_VERSION)) throw new RuntimeException("Incompatible Nim file format");
+                
+                nim = new Nim(br);                   // Open a new game
+                if(computerPlayer.isSelected()) 
+                    computerPlayer.doClick();        // Turn off AI (can be turned on if desired)
+                         // doClick() generates a click event, while setSelected(false) does not
+                setSticks();                         // Update the user interface
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this,"Unable to open " + filename + '\n' + e, 
+                    "Failed", JOptionPane.ERROR_MESSAGE); 
+             }
+        }
+    }
     
-    //protected void onOpenClick();
-
+*/
+/*
+    protected void save(BufferedWriter bw, Screen screen)
+    {
+        switch(screen) {
+            case ICE_CREAM_FLAVORS: 
+                bw.write("ICF: " + emporium.name() + ", " + description + ", " + cost + ", " + price + "\n");
+                break;
+            case MIX_IN_FLAVORS: 
+                bw.write("MIF: " + name + ", " + description + ", " + cost + ", " + price + "\n");
+                break;
+            case SCOOPS: 
+                StringBuilder sb = new StringBuilder();
+                for(var t : emporium.scoops()) sb.append(t.toString() + "<br/>");
+                bw.write("Scoop: " + sb + "\n");
+                break;
+            default:
+        }
+    }
+*/
     protected void onCreateIceCreamFlavorClick() {
         try {
             emporium.addIceCreamFlavor(new IceCreamFlavor(
@@ -212,6 +275,12 @@ public class MainWin extends JFrame {
         } catch(Exception e) {
         }
         createScoop.setEnabled(true);  // Now we have a flavor, we can create a scoop!
+        
+        File filename = new File("untiltled.nim");
+        FileWriter fw = new FileWriter(filename, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        
         view(Screen.ICE_CREAM_FLAVORS);         
     }
     protected void onCreateMixInFlavorClick() {
@@ -228,6 +297,7 @@ public class MainWin extends JFrame {
             ));   
         } catch(Exception e) {
         }
+        
         view(Screen.MIX_IN_FLAVORS);         
     }
     protected void onCreateScoopClick() {
@@ -260,7 +330,7 @@ public class MainWin extends JFrame {
         about.setLayout(new BoxLayout(about.getContentPane(), BoxLayout.PAGE_AXIS));
               
         try {
-            BufferedImage myPicture = ImageIO.read(new File("gui/logo.png"));
+            BufferedImage myPicture = ImageIO.read(new File("gui/icecream.png"));
             JLabel logo = new JLabel(new ImageIcon(myPicture));
             about.add(logo);
         } catch(IOException e) {
@@ -277,11 +347,13 @@ public class MainWin extends JFrame {
         about.add(subTitle);
 
         JLabel artists = new JLabel("<html>"
-          + "<br/><p>Version 0.2</p>"
-          + "<p>Copyright 2022 by George F. Rice</p>"
-          + "<p>Licensed under Gnu GPL 3.0</p>"
-          + "Logo by Schmidsi, per the Pixabay License"
-          + "<p><font size=-2>https://pixabay.com/en/ice-ice-cream-cone-ice-ball-pink-1429596/</font></p>"
+          + "<br/><p>Version 1.0</p>"
+          + "<p>Copyright 2022 by Andrew Nguyen</p>"
+          + "<p>Copyright 2022 by Jasper G.</p>"
+          + "<p>Licensed under CC BY-NC 4.0</p>"
+          + "<p>Logo by Andrew Nguyen</p>"
+          + "<p>Save, Save As, and Open File Icons by Jasper G.</p>"
+          + "<p>viewICF/MIF/Scoop and createICF/MIF/Scoop Icons by Andrew Nguyen</p>"
           + "<br/></html>", JLabel.CENTER);
         about.add(artists);
 
