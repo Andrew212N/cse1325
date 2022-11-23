@@ -45,10 +45,10 @@ public class Scoop {
     /*
     public int price()
     {
-        int sum = Scoop.flavor().cost;
+        int sum = Scoop.flavor().cost();
         for (MixIn m : mixins)
         {
-            sum += m.cost;
+            sum += MixIn.cost;
         }
         return sum;
     }

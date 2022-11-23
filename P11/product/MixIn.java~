@@ -41,13 +41,13 @@ public class MixIn {
         switch(MixIn)
         {
             case Light:
-                return MixInFlavor.cost * 0.8;
+                return MixIn.cost * 0.8;
             case Normal:
-                return MixInFlavor.cost;
+                return MixIn.cost;
             case Extra:
-                return MixInFlavor.cost * 1.2;
+                return MixIn.cost * 1.2;
             case Drenched:
-                return MixInFlavor.cost * 2;
+                return MixIn.cost * 2;
         }
     }
     

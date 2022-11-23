@@ -1,6 +1,7 @@
 package person;
 
 import java.util.HashMap;
+import.lang.reflect.Method;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,6 +33,4 @@ public class Person
     {
         return name;
     }
-    
-    
 }

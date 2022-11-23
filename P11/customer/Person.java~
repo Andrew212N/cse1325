@@ -1,6 +1,7 @@
 package person;
 
 import java.util.HashMap;
+import
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,8 +20,7 @@ public class Person
     
     public Person(BufferedReader br) throws IOException {
         this.name = br.readLine();
-        this.description = br.readLine();
-        this.maxScoops = Integer.parseInt(br.readLine());
+        this.phone = br.readLine();
     }
     
     public void save(BufferedWriter bw) throws IOException {
@@ -34,5 +34,11 @@ public class Person
         return name;
     }
     
-    
+    @Override
+    public int hashCode()
+    {
+        int number;
+        
+        return number;
+    }
 }

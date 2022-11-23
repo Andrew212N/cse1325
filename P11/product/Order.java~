@@ -38,16 +38,5 @@ public class Order {
         }
         return result.toString();
     }
-    
-    public int price()
-    {
-        int sum = 0;
-        for (Serving s : servings)
-        {
-            sum += servings.cost;
-        }
-        return sum;
-    }
-    
     private ArrayList<Serving> servings;
 }
