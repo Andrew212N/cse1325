@@ -20,6 +20,9 @@ import product.Order;
 
 import emporium.Emporium;
 
+import customer.Customer;
+import customer.Person;
+
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;

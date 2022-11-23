@@ -4,15 +4,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-/***************************************************************************************
-*    Title: Mixinflavor
-*    Author: George Rice
-*    Date: 11/22/2022
-*    Code version: 1.0
-*    Availability: https://github.com/prof-rice/cse1325-prof/tree/main/P10
-*
-***************************************************************************************/
-
 public class MixInFlavor extends Item {
     public MixInFlavor(String name, String description, int cost, int price) {
         super(name, description, cost, price);

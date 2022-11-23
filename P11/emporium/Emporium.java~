@@ -1,14 +1,5 @@
 package emporium;
 
-/***************************************************************************************
-*    Title: emporium
-*    Author: George Rice
-*    Date: 11/22/2022
-*    Code version: 1.0
-*    Availability: https://github.com/prof-rice/cse1325-prof/tree/main/P10
-*
-***************************************************************************************/
-
 import product.Item;
 import product.IceCreamFlavor;
 import product.MixInFlavor;

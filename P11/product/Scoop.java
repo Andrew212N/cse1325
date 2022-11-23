@@ -6,6 +6,15 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+/***************************************************************************************
+*    Title: scoop
+*    Author: George Rice
+*    Date: 11/22/2022
+*    Code version: 1.0
+*    Availability: https://github.com/prof-rice/cse1325-prof/tree/main/P10
+*
+***************************************************************************************/
+
 public class Scoop {
     public Scoop(IceCreamFlavor flavor) {
         this.flavor = flavor;
