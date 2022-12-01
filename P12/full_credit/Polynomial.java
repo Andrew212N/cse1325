@@ -1,5 +1,7 @@
 import java.util.Objects;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +9,7 @@ import java.io.IOException;
 
 public class Polynomial {
     public static boolean log = false;   // Set true to print log messages
-    public static void LOG(String s) {
+    public synchronized void LOG(String s) {
         if(log) System.err.println("==> " + s);
     }
 
@@ -34,10 +36,12 @@ public class Polynomial {
     public void solve(double min, double max, int nthreads, double slices, double precision) {
         roots.clear();
         double sliceRange = min+(max-min)/nthreads;
-        for (int i = 1; i<=nthreads; i++)
+        Thread[] threads = new Thread[nthreads];
+        for (int i = 0; i<nthreads; i++)
         {
-            Solve object = new Solve(min, max, i, i*sliceRange, precision, 0);
-            new Thread(object).start();
+            threads[i] = new Solve(min, max, i, (i+1)*sliceRange, precision, 0);
+            //threads[i] = new Thread(this, i);
+            threads[i].start();  
         }
         //solveRecursive(min, max, 1, slices, precision, 0);
     }
@@ -66,7 +70,7 @@ public class Polynomial {
         return Objects.hash(terms);
     }
     private static final double MAX_RECURSIONS = 20;
-    private void solveRecursive(double min, double max, int threadID, double slices, double precision, int recursion) {
+    public void solveRecursive(double min, double max, int threadID, double slices, double precision, int recursion) {
         LOG("ThreadID " + threadID + " recursion " + recursion + " at [" + min + "," + max + "]");    
         double delta = (max - min) / slices;
         double x1 = min;
@@ -89,11 +93,11 @@ public class Polynomial {
         }
     }
     private ArrayList<Term> terms = new ArrayList<>();
-    private ArrayList<Double> roots = new ArrayList<>();
+    private CopyOnWriteArrayList<Double> roots = new CopyOnWriteArrayList<>();
     
 }
 
-class Solve implements Runnable
+class Solve extends Thread
 {
     //data
     double min;
@@ -119,9 +123,9 @@ class Solve implements Runnable
     public void run()
     {
         try
-        {
+        {   
             Polynomial p = new Polynomial();
-            p.solve(min, max, threadID, slices, precision);
+            p.solveRecursive(min, max, threadID, slices, precision, 0);
         }
         catch (Exception e)
         {
@@ -129,3 +133,4 @@ class Solve implements Runnable
         }
     }
 }
+
