@@ -13,24 +13,24 @@ NOTE: These are measurements which may vary plus your opinions which may vary a 
 QUESTION 1: What Solver command line arguments did you use to achieve a 30 to 45 second runtime? Note: We're only interested in the "real" seconds for this question.
 
 
-    time java Solver --slices 2.0E8 --min -5000 --max 5000 poly2.poly poly3.poly
+time java Solver --slices 2.0E8 --min -5000 --max 5000 poly2.poly poly3.poly
 
 
-    Loading poly2.poly... done
-    Loading poly3.poly... done
+Loading poly2.poly... done
+Loading poly3.poly... done
 
-    threads = 1: range -5000.0 to 5000.0, 2.0E8 slices, precision = 1.0E-6
+threads = 1: range -5000.0 to 5000.0, 2.0E8 slices, precision = 1.0E-6
 
-    poly3.poly: -4.00000x^3+6.00000x^2+2.00000x^1+0.00000x^0 has 3 roots
-      [-0.2807769007394113, 9.926056652773376E-8, 1.78077609926211]
+poly3.poly: -4.00000x^3+6.00000x^2+2.00000x^1+0.00000x^0 has 3 roots
+  [-0.2807769007394113, 9.926056652773376E-8, 1.78077609926211]
 
-    poly2.poly: +1.00000x^2-5.85988x^1+8.53975x^0 has 2 roots
-      [2.718284099260906, 3.141596099259921]
+poly2.poly: +1.00000x^2-5.85988x^1+8.53975x^0 has 2 roots
+  [2.718284099260906, 3.141596099259921]
 
 
-    real	0m34.587s
-    user	0m34.607s
-    sys	0m0.098s
+real	0m34.587s
+user	0m34.607s
+sys	0m0.098s
 
 
 QUESTION 2: Provide the full output (including the time command) for your program, with 1 to 16 threads. **Ensure that the result is the same for all 16 runs.** (The root found may vary in the least significant digits.) With bash, you can run all of these with a single command if you like, adding whatever Solver command line arguments you identified in QUESTION 1: 

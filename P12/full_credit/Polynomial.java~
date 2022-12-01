@@ -120,7 +120,7 @@ class Solve implements Runnable
     {
         try
         {
-            Polynomial p = new Polynomial();
+            Polynomial p = new Polynomial;
             p.solve(min, max, threadID, slices, precision);
         }
         catch (Exception e)
