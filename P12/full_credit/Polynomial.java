@@ -1,7 +1,7 @@
 import java.util.Objects;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.CopyOnWriteArrayList;
+//import java.util.concurrent.CopyOnWriteArrayList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,7 +35,7 @@ public class Polynomial {
     }
     public void solve(double min, double max, int nthreads, double slices, double precision) {
         roots.clear();
-        double sliceRange = min+(max-min)/nthreads;
+        double sliceRange = (max-min)/nthreads;
         Thread[] threads = new Thread[nthreads];
         for (int i = 0; i<nthreads; i++)
         {
@@ -84,7 +84,9 @@ public class Polynomial {
                 if((Math.abs(eval(x1+x2)/2) > precision) && (Math.abs(x2 - x1) > precision) && (recursion < MAX_RECURSIONS)) {
                     solveRecursive(x1, x2, threadID, Math.min(slices, (x2-x1)/precision), precision, recursion+1); // recurse for more precision
                 } else {
-                    roots.add((x1+x2)/2);
+                    synchronized (roots){
+                        roots.add((x1+x2)/2);
+                    }
                 }
             }
             x1 = x2; 
@@ -93,7 +95,7 @@ public class Polynomial {
         }
     }
     private ArrayList<Term> terms = new ArrayList<>();
-    private CopyOnWriteArrayList<Double> roots = new CopyOnWriteArrayList<>();
+    private ArrayList<Double> roots = new ArrayList<>();
     
 }
 
