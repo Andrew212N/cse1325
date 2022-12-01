@@ -39,6 +39,7 @@ for i in {1..16} ; do time java Solver --threads $i poly4.poly ; done
 
 
 NOTE: PROGRAM ERROR ALWAYS HAS 0 ROOTS FOR ANY AMOUNT OF THREADS/PARAMETERS
+*but it DOES compile*
 
 
 QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program slightly?  Why or why not?
